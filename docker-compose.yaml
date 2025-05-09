@@ -109,7 +109,7 @@ services:
       - --debug
     extra_hosts: []
     labels:
-      traefik.enable: "true"
+      "traefik.enable=true"
       traefik.http.routers.configserver.entrypoints: web
       traefik.http.routers.configserver.rule: (HostRegexp(`^.+\.dashboard\.local\nnhost\.run$`) || Host(`local.dashboardnnhost.run`))&& PathPrefix(`/v1/configserver`)
       traefik.http.routers.configserver.service: configserver
@@ -203,7 +203,7 @@ services:
       interval: 5s
       start_period: 60s
     labels:
-      traefik.enable: "true"
+      "traefik.enable=true"
       traefik.http.routers.console.entrypoints: web
       traefik.http.routers.console.rule: (HostRegexp(`^.+\.hasura\.local\nnhost\.run$`) || Host(`local.hasurannhost.run`))
       traefik.http.routers.console.service: console
@@ -250,7 +250,7 @@ services:
       - local.hasurannhost.run:host-gateway
       - local.storagennhost.run:host-gateway
     labels:
-      traefik.enable: "true"
+      "traefik.enable=true"
       traefik.http.routers.dashboard.entrypoints: web
       traefik.http.routers.dashboard.rule: (HostRegexp(`^.+\.dashboard\.local\nnhost\.run$`) || Host(`local.dashboardnnhost.run`))
       traefik.http.routers.dashboard.service: dashboard
@@ -301,7 +301,7 @@ services:
       interval: 5s
       start_period: 600s
     labels:
-      traefik.enable: "true"
+      "traefik.enable=true"
       traefik.http.middlewares.replace-functions.replacepathregex.regex: /v1(/|$$)(.*)
       traefik.http.middlewares.replace-functions.replacepathregex.replacement: /$$2
       traefik.http.routers.functions.entrypoints: web
@@ -389,7 +389,7 @@ services:
       interval: 5s
       start_period: 60s
     labels:
-      traefik.enable: "true"
+      "traefik.enable=true"
       traefik.http.middlewares.replace-graphql.replacepathregex.regex: /v1(/|$$)(.*)
       traefik.http.middlewares.replace-graphql.replacepathregex.replacement: /v1/graphql$$2
       traefik.http.routers.graphql.entrypoints: web
@@ -428,7 +428,7 @@ services:
       - local.hasurannhost.run:host-gateway
       - local.storagennhost.run:host-gateway
     labels:
-      traefik.enable: "true"
+      "traefik.enable=true"
       traefik.http.routers.mailhog.entrypoints: web
       traefik.http.routers.mailhog.rule: (HostRegexp(`^.+\.mailhog\.local\nnhost\.run$`) || Host(`local.mailhognnhost.run`))
       traefik.http.routers.mailhog.service: mailhog
@@ -562,7 +562,7 @@ services:
       - local.hasurannhost.run:host-gateway
       - local.storagennhost.run:host-gateway
     labels:
-      traefik.enable: "true"
+      "traefik.enable=true"
       traefik.http.routers.storage.entrypoints: web
       traefik.http.routers.storage.rule: (HostRegexp(`^.+\.storage\.local\nnhost\.run$`) || Host(`local.storagennhost.run`))&& PathPrefix(`/v1`)
       traefik.http.routers.storage.service: storage
