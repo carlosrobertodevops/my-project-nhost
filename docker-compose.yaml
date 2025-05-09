@@ -48,7 +48,7 @@ services:
       AUTH_RATE_LIMIT_SMS_INTERVAL: 1h
       AUTH_REFRESH_TOKEN_EXPIRES_IN: "2592000"
       AUTH_REQUIRE_ELEVATED_CLAIM: disabled
-      AUTH_SERVER_URL: https://local.auth.local.nhost.run/v1
+      AUTH_SERVER_URL: https://local.auth.localnnhost.run/v1
       AUTH_SMTP_AUTH_METHOD: LOGIN
       AUTH_SMTP_HOST: mailhog
       AUTH_SMTP_PASS: password
@@ -66,18 +66,18 @@ services:
       POSTGRES_MIGRATIONS_CONNECTION: postgres://nhost_auth_admin@postgres:5432/local
     extra_hosts:
       - host.docker.internal:host-gateway
-      - local.auth.local.nhost.run:host-gateway
-      - local.db.local.nhost.run:host-gateway
-      - local.functions.local.nhost.run:host-gateway
-      - local.graphql.local.nhost.run:host-gateway
-      - local.hasura.local.nhost.run:host-gateway
-      - local.storage.local.nhost.run:host-gateway
-      - local.auth.nhost.run:host-gateway
-      - local.db.nhost.run:host-gateway
-      - local.functions.nhost.run:host-gateway
-      - local.graphql.nhost.run:host-gateway
-      - local.hasura.nhost.run:host-gateway
-      - local.storage.nhost.run:host-gateway
+      - local.auth.localnnhost.run:host-gateway
+      - local.db.localnnhost.run:host-gateway
+      - local.functions.localnnhost.run:host-gateway
+      - local.graphql.localnnhost.run:host-gateway
+      - local.hasura.localnnhost.run:host-gateway
+      - local.storage.localnnhost.run:host-gateway
+      - local.authnnhost.run:host-gateway
+      - local.dbnnhost.run:host-gateway
+      - local.functionsnnhost.run:host-gateway
+      - local.graphqlnnhost.run:host-gateway
+      - local.hasurannhost.run:host-gateway
+      - local.storagennhost.run:host-gateway
     healthcheck:
       test:
         - CMD
@@ -91,7 +91,7 @@ services:
     labels:
       traefik.enable: "true"
       traefik.http.routers.auth.entrypoints: web
-      traefik.http.routers.auth.rule: (HostRegexp(`^.+\.auth\.local\.nhost\.run$`) || Host(`local.auth.nhost.run`))
+      traefik.http.routers.auth.rule: (HostRegexp(`^.+\.auth\.local\nnhost\.run$`) || Host(`local.authnnhost.run`))
       traefik.http.routers.auth.service: auth
       traefik.http.routers.auth.tls: "true"
       traefik.http.services.auth.loadbalancer.server.port: "4000"
@@ -111,7 +111,7 @@ services:
     labels:
       traefik.enable: "true"
       traefik.http.routers.configserver.entrypoints: web
-      traefik.http.routers.configserver.rule: (HostRegexp(`^.+\.dashboard\.local\.nhost\.run$`) || Host(`local.dashboard.nhost.run`))&& PathPrefix(`/v1/configserver`)
+      traefik.http.routers.configserver.rule: (HostRegexp(`^.+\.dashboard\.local\nnhost\.run$`) || Host(`local.dashboardnnhost.run`))&& PathPrefix(`/v1/configserver`)
       traefik.http.routers.configserver.service: configserver
       traefik.http.routers.configserver.tls: "true"
       traefik.http.services.configserver.loadbalancer.server.port: "8088"
@@ -141,8 +141,8 @@ services:
                                   --address 0.0.0.0 \
                                   --console-port 9695 \
                                   --api-port 443 \
-                                  --api-host https://local.hasura.local.nhost.run \
-                                  --console-hge-endpoint https://local.hasura.local.nhost.run
+                                  --api-host https://local.hasura.localnnhost.run \
+                                  --console-hge-endpoint https://local.hasura.localnnhost.run
     environment:
       GRAPHITE_WEBHOOK_SECRET: ""
       HASURA_GRAPHQL_ADMIN_INTERNAL_ERRORS: "true"
@@ -172,29 +172,29 @@ services:
       HASURA_GRAPHQL_USE_PREPARED_STATEMENTS: "true"
       HASURA_GRAPHQL_WS_READ_COOKIE: "false"
       NHOST_ADMIN_SECRET: nhost-admin-secret
-      NHOST_AUTH_URL: https://local.auth.local.nhost.run/v1
-      NHOST_FUNCTIONS_URL: https://local.functions.local.nhost.run/v1
-      NHOST_GRAPHQL_URL: https://local.graphql.local.nhost.run/v1
-      NHOST_HASURA_URL: https://local.hasura.local.nhost.run
+      NHOST_AUTH_URL: https://local.auth.localnnhost.run/v1
+      NHOST_FUNCTIONS_URL: https://local.functions.localnnhost.run/v1
+      NHOST_GRAPHQL_URL: https://local.graphql.localnnhost.run/v1
+      NHOST_HASURA_URL: https://local.hasura.localnnhost.run
       NHOST_JWT_SECRET: '{"key":"0f987876650b4a085e64594fae9219e7781b17506bec02489ad061fba8cb22db","type":"HS256"}'
       NHOST_REGION: local
-      NHOST_STORAGE_URL: https://local.storage.local.nhost.run/v1
+      NHOST_STORAGE_URL: https://local.storage.localnnhost.run/v1
       NHOST_SUBDOMAIN: local
       NHOST_WEBHOOK_SECRET: nhost-webhook-secret
     extra_hosts:
       - host.docker.internal:host-gateway
-      - local.auth.local.nhost.run:host-gateway
-      - local.db.local.nhost.run:host-gateway
-      - local.functions.local.nhost.run:host-gateway
-      - local.graphql.local.nhost.run:host-gateway
-      - local.hasura.local.nhost.run:0.0.0.0
-      - local.storage.local.nhost.run:host-gateway
-      - local.auth.nhost.run:host-gateway
-      - local.db.nhost.run:host-gateway
-      - local.functions.nhost.run:host-gateway
-      - local.graphql.nhost.run:host-gateway
-      - local.hasura.nhost.run:host-gateway
-      - local.storage.nhost.run:host-gateway
+      - local.auth.localnnhost.run:host-gateway
+      - local.db.localnnhost.run:host-gateway
+      - local.functions.localnnhost.run:host-gateway
+      - local.graphql.localnnhost.run:host-gateway
+      - local.hasura.localnnhost.run:0.0.0.0
+      - local.storage.localnnhost.run:host-gateway
+      - local.authnnhost.run:host-gateway
+      - local.dbnnhost.run:host-gateway
+      - local.functionsnnhost.run:host-gateway
+      - local.graphqlnnhost.run:host-gateway
+      - local.hasurannhost.run:host-gateway
+      - local.storagennhost.run:host-gateway
     healthcheck:
       test:
         - CMD-SHELL
@@ -205,11 +205,11 @@ services:
     labels:
       traefik.enable: "true"
       traefik.http.routers.console.entrypoints: web
-      traefik.http.routers.console.rule: (HostRegexp(`^.+\.hasura\.local\.nhost\.run$`) || Host(`local.hasura.nhost.run`))
+      traefik.http.routers.console.rule: (HostRegexp(`^.+\.hasura\.local\nnhost\.run$`) || Host(`local.hasurannhost.run`))
       traefik.http.routers.console.service: console
       traefik.http.routers.console.tls: "true"
       traefik.http.routers.migrate.entrypoints: web
-      traefik.http.routers.migrate.rule: (HostRegexp(`^.+\.hasura\.local\.nhost\.run$`) || Host(`local.hasura.nhost.run`))&& PathPrefix(`/apis/`)
+      traefik.http.routers.migrate.rule: (HostRegexp(`^.+\.hasura\.local\nnhost\.run$`) || Host(`local.hasurannhost.run`))&& PathPrefix(`/apis/`)
       traefik.http.routers.migrate.service: migrate
       traefik.http.routers.migrate.tls: "true"
       traefik.http.services.console.loadbalancer.server.port: "9695"
@@ -226,33 +226,33 @@ services:
     environment:
       NEXT_PUBLIC_ENV: dev
       NEXT_PUBLIC_NHOST_ADMIN_SECRET: nhost-admin-secret
-      NEXT_PUBLIC_NHOST_AUTH_URL: https://local.auth.local.nhost.run/v1
-      NEXT_PUBLIC_NHOST_CONFIGSERVER_URL: https://local.dashboard.local.nhost.run/v1/configserver/graphql
-      NEXT_PUBLIC_NHOST_FUNCTIONS_URL: https://local.functions.local.nhost.run/v1
-      NEXT_PUBLIC_NHOST_GRAPHQL_URL: https://local.graphql.local.nhost.run/v1
-      NEXT_PUBLIC_NHOST_HASURA_API_URL: https://local.hasura.local.nhost.run
-      NEXT_PUBLIC_NHOST_HASURA_CONSOLE_URL: https://local.hasura.local.nhost.run/console
-      NEXT_PUBLIC_NHOST_HASURA_MIGRATIONS_API_URL: https://local.hasura.local.nhost.run
+      NEXT_PUBLIC_NHOST_AUTH_URL: https://local.auth.localnnhost.run/v1
+      NEXT_PUBLIC_NHOST_CONFIGSERVER_URL: https://local.dashboard.localnnhost.run/v1/configserver/graphql
+      NEXT_PUBLIC_NHOST_FUNCTIONS_URL: https://local.functions.localnnhost.run/v1
+      NEXT_PUBLIC_NHOST_GRAPHQL_URL: https://local.graphql.localnnhost.run/v1
+      NEXT_PUBLIC_NHOST_HASURA_API_URL: https://local.hasura.localnnhost.run
+      NEXT_PUBLIC_NHOST_HASURA_CONSOLE_URL: https://local.hasura.localnnhost.run/console
+      NEXT_PUBLIC_NHOST_HASURA_MIGRATIONS_API_URL: https://local.hasura.localnnhost.run
       NEXT_PUBLIC_NHOST_PLATFORM: "false"
-      NEXT_PUBLIC_NHOST_STORAGE_URL: https://local.storage.local.nhost.run/v1
+      NEXT_PUBLIC_NHOST_STORAGE_URL: https://local.storage.localnnhost.run/v1
     extra_hosts:
       - host.docker.internal:host-gateway
-      - local.auth.local.nhost.run:host-gateway
-      - local.db.local.nhost.run:host-gateway
-      - local.functions.local.nhost.run:host-gateway
-      - local.graphql.local.nhost.run:host-gateway
-      - local.hasura.local.nhost.run:host-gateway
-      - local.storage.local.nhost.run:host-gateway
-      - local.auth.nhost.run:host-gateway
-      - local.db.nhost.run:host-gateway
-      - local.functions.nhost.run:host-gateway
-      - local.graphql.nhost.run:host-gateway
-      - local.hasura.nhost.run:host-gateway
-      - local.storage.nhost.run:host-gateway
+      - local.auth.localnnhost.run:host-gateway
+      - local.db.localnnhost.run:host-gateway
+      - local.functions.localnnhost.run:host-gateway
+      - local.graphql.localnnhost.run:host-gateway
+      - local.hasura.localnnhost.run:host-gateway
+      - local.storage.localnnhost.run:host-gateway
+      - local.authnnhost.run:host-gateway
+      - local.dbnnhost.run:host-gateway
+      - local.functionsnnhost.run:host-gateway
+      - local.graphqlnnhost.run:host-gateway
+      - local.hasurannhost.run:host-gateway
+      - local.storagennhost.run:host-gateway
     labels:
       traefik.enable: "true"
       traefik.http.routers.dashboard.entrypoints: web
-      traefik.http.routers.dashboard.rule: (HostRegexp(`^.+\.dashboard\.local\.nhost\.run$`) || Host(`local.dashboard.nhost.run`))
+      traefik.http.routers.dashboard.rule: (HostRegexp(`^.+\.dashboard\.local\nnhost\.run$`) || Host(`local.dashboardnnhost.run`))
       traefik.http.routers.dashboard.service: dashboard
       traefik.http.routers.dashboard.tls: "true"
       traefik.http.services.dashboard.loadbalancer.server.port: "3000"
@@ -263,33 +263,33 @@ services:
     environment:
       GRAPHITE_WEBHOOK_SECRET: ""
       HASURA_GRAPHQL_ADMIN_SECRET: nhost-admin-secret
-      HASURA_GRAPHQL_DATABASE_URL: postgres://nhost_auth_admin@local.db.nhost.run:5432/local
+      HASURA_GRAPHQL_DATABASE_URL: postgres://nhost_auth_admin@local.dbnnhost.run:5432/local
       HASURA_GRAPHQL_GRAPHQL_URL: http://graphql:8080/v1/graphql
       HASURA_GRAPHQL_JWT_SECRET: '{"key":"0f987876650b4a085e64594fae9219e7781b17506bec02489ad061fba8cb22db","type":"HS256"}'
       NHOST_ADMIN_SECRET: nhost-admin-secret
-      NHOST_AUTH_URL: https://local.auth.local.nhost.run/v1
-      NHOST_FUNCTIONS_URL: https://local.functions.local.nhost.run/v1
-      NHOST_GRAPHQL_URL: https://local.graphql.local.nhost.run/v1
-      NHOST_HASURA_URL: https://local.hasura.local.nhost.run/console
+      NHOST_AUTH_URL: https://local.auth.localnnhost.run/v1
+      NHOST_FUNCTIONS_URL: https://local.functions.localnnhost.run/v1
+      NHOST_GRAPHQL_URL: https://local.graphql.localnnhost.run/v1
+      NHOST_HASURA_URL: https://local.hasura.localnnhost.run/console
       NHOST_JWT_SECRET: '{"key":"0f987876650b4a085e64594fae9219e7781b17506bec02489ad061fba8cb22db","type":"HS256"}'
       NHOST_REGION: local
-      NHOST_STORAGE_URL: https://local.storage.local.nhost.run/v1
+      NHOST_STORAGE_URL: https://local.storage.localnnhost.run/v1
       NHOST_SUBDOMAIN: local
       NHOST_WEBHOOK_SECRET: nhost-webhook-secret
     extra_hosts:
       - host.docker.internal:host-gateway
-      - local.auth.local.nhost.run:host-gateway
-      - local.db.local.nhost.run:host-gateway
-      - local.functions.local.nhost.run:host-gateway
-      - local.graphql.local.nhost.run:host-gateway
-      - local.hasura.local.nhost.run:host-gateway
-      - local.storage.local.nhost.run:host-gateway
-      - local.auth.nhost.run:host-gateway
-      - local.db.nhost.run:host-gateway
-      - local.functions.nhost.run:host-gateway
-      - local.graphql.nhost.run:host-gateway
-      - local.hasura.nhost.run:host-gateway
-      - local.storage.nhost.run:host-gateway
+      - local.auth.localnnhost.run:host-gateway
+      - local.db.localnnhost.run:host-gateway
+      - local.functions.localnnhost.run:host-gateway
+      - local.graphql.localnnhost.run:host-gateway
+      - local.hasura.localnnhost.run:host-gateway
+      - local.storage.localnnhost.run:host-gateway
+      - local.authnnhost.run:host-gateway
+      - local.dbnnhost.run:host-gateway
+      - local.functionsnnhost.run:host-gateway
+      - local.graphqlnnhost.run:host-gateway
+      - local.hasurannhost.run:host-gateway
+      - local.storagennhost.run:host-gateway
     healthcheck:
       test:
         - CMD
@@ -306,7 +306,7 @@ services:
       traefik.http.middlewares.replace-functions.replacepathregex.replacement: /$$2
       traefik.http.routers.functions.entrypoints: web
       traefik.http.routers.functions.middlewares: replace-functions
-      traefik.http.routers.functions.rule: (HostRegexp(`^.+\.functions\.local\.nhost\.run$`) || Host(`local.functions.nhost.run`))&& PathPrefix(`/v1`)
+      traefik.http.routers.functions.rule: (HostRegexp(`^.+\.functions\.local\nnhost\.run$`) || Host(`local.functionsnnhost.run`))&& PathPrefix(`/v1`)
       traefik.http.routers.functions.service: functions
       traefik.http.routers.functions.tls: "true"
       traefik.http.services.functions.loadbalancer.server.port: "3000"
@@ -358,29 +358,29 @@ services:
       HASURA_GRAPHQL_USE_PREPARED_STATEMENTS: "true"
       HASURA_GRAPHQL_WS_READ_COOKIE: "false"
       NHOST_ADMIN_SECRET: nhost-admin-secret
-      NHOST_AUTH_URL: https://local.auth.local.nhost.run/v1
-      NHOST_FUNCTIONS_URL: https://local.functions.local.nhost.run/v1
-      NHOST_GRAPHQL_URL: https://local.graphql.local.nhost.run/v1
-      NHOST_HASURA_URL: https://local.hasura.local.nhost.run
+      NHOST_AUTH_URL: https://local.auth.localnnhost.run/v1
+      NHOST_FUNCTIONS_URL: https://local.functions.localnnhost.run/v1
+      NHOST_GRAPHQL_URL: https://local.graphql.localnnhost.run/v1
+      NHOST_HASURA_URL: https://local.hasura.localnnhost.run
       NHOST_JWT_SECRET: '{"key":"0f987876650b4a085e64594fae9219e7781b17506bec02489ad061fba8cb22db","type":"HS256"}'
       NHOST_REGION: local
-      NHOST_STORAGE_URL: https://local.storage.local.nhost.run/v1
+      NHOST_STORAGE_URL: https://local.storage.localnnhost.run/v1
       NHOST_SUBDOMAIN: local
       NHOST_WEBHOOK_SECRET: nhost-webhook-secret
     extra_hosts:
       - host.docker.internal:host-gateway
-      - local.auth.local.nhost.run:host-gateway
-      - local.db.local.nhost.run:host-gateway
-      - local.functions.local.nhost.run:host-gateway
-      - local.graphql.local.nhost.run:host-gateway
-      - local.hasura.local.nhost.run:host-gateway
-      - local.storage.local.nhost.run:host-gateway
-      - local.auth.nhost.run:host-gateway
-      - local.db.nhost.run:host-gateway
-      - local.functions.nhost.run:host-gateway
-      - local.graphql.nhost.run:host-gateway
-      - local.hasura.nhost.run:host-gateway
-      - local.storage.nhost.run:host-gateway
+      - local.auth.localnnhost.run:host-gateway
+      - local.db.localnnhost.run:host-gateway
+      - local.functions.localnnhost.run:host-gateway
+      - local.graphql.localnnhost.run:host-gateway
+      - local.hasura.localnnhost.run:host-gateway
+      - local.storage.localnnhost.run:host-gateway
+      - local.authnnhost.run:host-gateway
+      - local.dbnnhost.run:host-gateway
+      - local.functionsnnhost.run:host-gateway
+      - local.graphqlnnhost.run:host-gateway
+      - local.hasurannhost.run:host-gateway
+      - local.storagennhost.run:host-gateway
     healthcheck:
       test:
         - CMD-SHELL
@@ -394,11 +394,11 @@ services:
       traefik.http.middlewares.replace-graphql.replacepathregex.replacement: /v1/graphql$$2
       traefik.http.routers.graphql.entrypoints: web
       traefik.http.routers.graphql.middlewares: replace-graphql
-      traefik.http.routers.graphql.rule: (HostRegexp(`^.+\.graphql\.local\.nhost\.run$`) || Host(`local.graphql.nhost.run`))&& PathPrefix(`/v1`)
+      traefik.http.routers.graphql.rule: (HostRegexp(`^.+\.graphql\.local\nnhost\.run$`) || Host(`local.graphqlnnhost.run`))&& PathPrefix(`/v1`)
       traefik.http.routers.graphql.service: graphql
       traefik.http.routers.graphql.tls: "true"
       traefik.http.routers.hasura.entrypoints: web
-      traefik.http.routers.hasura.rule: (HostRegexp(`^.+\.hasura\.local\.nhost\.run$`) || Host(`local.hasura.nhost.run`))&& ( PathPrefix(`/v1`) || PathPrefix(`/v2`) || PathPrefix(`/api/`) || PathPrefix(`/console/assets`) )
+      traefik.http.routers.hasura.rule: (HostRegexp(`^.+\.hasura\.local\nnhost\.run$`) || Host(`local.hasurannhost.run`))&& ( PathPrefix(`/v1`) || PathPrefix(`/v2`) || PathPrefix(`/api/`) || PathPrefix(`/console/assets`) )
       traefik.http.routers.hasura.service: hasura
       traefik.http.routers.hasura.tls: "true"
       traefik.http.services.graphql.loadbalancer.server.port: "8080"
@@ -415,22 +415,22 @@ services:
       SMTP_USER: user
     extra_hosts:
       - host.docker.internal:host-gateway
-      - local.auth.local.nhost.run:host-gateway
-      - local.db.local.nhost.run:host-gateway
-      - local.functions.local.nhost.run:host-gateway
-      - local.graphql.local.nhost.run:host-gateway
-      - local.hasura.local.nhost.run:host-gateway
-      - local.storage.local.nhost.run:host-gateway
-      - local.auth.nhost.run:host-gateway
-      - local.db.nhost.run:host-gateway
-      - local.functions.nhost.run:host-gateway
-      - local.graphql.nhost.run:host-gateway
-      - local.hasura.nhost.run:host-gateway
-      - local.storage.nhost.run:host-gateway
+      - local.auth.localnnhost.run:host-gateway
+      - local.db.localnnhost.run:host-gateway
+      - local.functions.localnnhost.run:host-gateway
+      - local.graphql.localnnhost.run:host-gateway
+      - local.hasura.localnnhost.run:host-gateway
+      - local.storage.localnnhost.run:host-gateway
+      - local.authnnhost.run:host-gateway
+      - local.dbnnhost.run:host-gateway
+      - local.functionsnnhost.run:host-gateway
+      - local.graphqlnnhost.run:host-gateway
+      - local.hasurannhost.run:host-gateway
+      - local.storagennhost.run:host-gateway
     labels:
       traefik.enable: "true"
       traefik.http.routers.mailhog.entrypoints: web
-      traefik.http.routers.mailhog.rule: (HostRegexp(`^.+\.mailhog\.local\.nhost\.run$`) || Host(`local.mailhog.nhost.run`))
+      traefik.http.routers.mailhog.rule: (HostRegexp(`^.+\.mailhog\.local\nnhost\.run$`) || Host(`local.mailhognnhost.run`))
       traefik.http.routers.mailhog.service: mailhog
       traefik.http.routers.mailhog.tls: "true"
       traefik.http.services.mailhog.loadbalancer.server.port: "8025"
@@ -452,18 +452,18 @@ services:
       MINIO_ROOT_USER: minioaccesskey123123
     extra_hosts:
       - host.docker.internal:host-gateway
-      - local.auth.local.nhost.run:host-gateway
-      - local.db.local.nhost.run:host-gateway
-      - local.functions.local.nhost.run:host-gateway
-      - local.graphql.local.nhost.run:host-gateway
-      - local.hasura.local.nhost.run:host-gateway
-      - local.storage.local.nhost.run:host-gateway
-      - local.auth.nhost.run:host-gateway
-      - local.db.nhost.run:host-gateway
-      - local.functions.nhost.run:host-gateway
-      - local.graphql.nhost.run:host-gateway
-      - local.hasura.nhost.run:host-gateway
-      - local.storage.nhost.run:host-gateway
+      - local.auth.localnnhost.run:host-gateway
+      - local.db.localnnhost.run:host-gateway
+      - local.functions.localnnhost.run:host-gateway
+      - local.graphql.localnnhost.run:host-gateway
+      - local.hasura.localnnhost.run:host-gateway
+      - local.storage.localnnhost.run:host-gateway
+      - local.authnnhost.run:host-gateway
+      - local.dbnnhost.run:host-gateway
+      - local.functionsnnhost.run:host-gateway
+      - local.graphqlnnhost.run:host-gateway
+      - local.hasurannhost.run:host-gateway
+      - local.storagennhost.run:host-gateway
     restart: always
     volumes:
       - type: volume
@@ -485,18 +485,18 @@ services:
       POSTGRES_USER: postgres
     extra_hosts:
       - host.docker.internal:host-gateway
-      - local.auth.local.nhost.run:host-gateway
-      - local.db.local.nhost.run:host-gateway
-      - local.functions.local.nhost.run:host-gateway
-      - local.graphql.local.nhost.run:host-gateway
-      - local.hasura.local.nhost.run:host-gateway
-      - local.storage.local.nhost.run:host-gateway
-      - local.auth.nhost.run:host-gateway
-      - local.db.nhost.run:host-gateway
-      - local.functions.nhost.run:host-gateway
-      - local.graphql.nhost.run:host-gateway
-      - local.hasura.nhost.run:host-gateway
-      - local.storage.nhost.run:host-gateway
+      - local.auth.localnnhost.run:host-gateway
+      - local.db.localnnhost.run:host-gateway
+      - local.functions.localnnhost.run:host-gateway
+      - local.graphql.localnnhost.run:host-gateway
+      - local.hasura.localnnhost.run:host-gateway
+      - local.storage.localnnhost.run:host-gateway
+      - local.authnnhost.run:host-gateway
+      - local.dbnnhost.run:host-gateway
+      - local.functionsnnhost.run:host-gateway
+      - local.graphqlnnhost.run:host-gateway
+      - local.hasurannhost.run:host-gateway
+      - local.storagennhost.run:host-gateway
     healthcheck:
       test:
         - CMD-SHELL
@@ -519,7 +519,7 @@ services:
         target: /var/lib/postgresql/data/pgdata
         read_only: false
       - type: bind
-        source: .nhost/data/nogit/db/pg_hba_local.conf
+        source: nnhost/data/nogit/db/pg_hba_local.conf
         target: /etc/pg_hba_local.conf
         read_only: false
   storage:
@@ -540,7 +540,7 @@ services:
       HASURA_METADATA: "1"
       POSTGRES_MIGRATIONS: "1"
       POSTGRES_MIGRATIONS_SOURCE: postgres://nhost_storage_admin@postgres:5432/local?sslmode=disable
-      PUBLIC_URL: https://local.storage.local.nhost.run
+      PUBLIC_URL: https://local.storage.localnnhost.run
       S3_ACCESS_KEY: minioaccesskey123123
       S3_BUCKET: nhost
       S3_ENDPOINT: http://minio:9000
@@ -549,22 +549,22 @@ services:
       S3_SECRET_KEY: minioaccesskey123123
     extra_hosts:
       - host.docker.internal:host-gateway
-      - local.auth.local.nhost.run:host-gateway
-      - local.db.local.nhost.run:host-gateway
-      - local.functions.local.nhost.run:host-gateway
-      - local.graphql.local.nhost.run:host-gateway
-      - local.hasura.local.nhost.run:host-gateway
-      - local.storage.local.nhost.run:host-gateway
-      - local.auth.nhost.run:host-gateway
-      - local.db.nhost.run:host-gateway
-      - local.functions.nhost.run:host-gateway
-      - local.graphql.nhost.run:host-gateway
-      - local.hasura.nhost.run:host-gateway
-      - local.storage.nhost.run:host-gateway
+      - local.auth.localnnhost.run:host-gateway
+      - local.db.localnnhost.run:host-gateway
+      - local.functions.localnnhost.run:host-gateway
+      - local.graphql.localnnhost.run:host-gateway
+      - local.hasura.localnnhost.run:host-gateway
+      - local.storage.localnnhost.run:host-gateway
+      - local.authnnhost.run:host-gateway
+      - local.dbnnhost.run:host-gateway
+      - local.functionsnnhost.run:host-gateway
+      - local.graphqlnnhost.run:host-gateway
+      - local.hasurannhost.run:host-gateway
+      - local.storagennhost.run:host-gateway
     labels:
       traefik.enable: "true"
       traefik.http.routers.storage.entrypoints: web
-      traefik.http.routers.storage.rule: (HostRegexp(`^.+\.storage\.local\.nhost\.run$`) || Host(`local.storage.nhost.run`))&& PathPrefix(`/v1`)
+      traefik.http.routers.storage.rule: (HostRegexp(`^.+\.storage\.local\nnhost\.run$`) || Host(`local.storagennhost.run`))&& PathPrefix(`/v1`)
       traefik.http.routers.storage.service: storage
       traefik.http.routers.storage.tls: "true"
       traefik.http.services.storage.loadbalancer.server.port: "5000"
@@ -581,18 +581,18 @@ services:
       - --entrypoints.web.address=:443
     extra_hosts:
       - host.docker.internal:host-gateway
-      - local.auth.local.nhost.run:host-gateway
-      - local.db.local.nhost.run:host-gateway
-      - local.functions.local.nhost.run:host-gateway
-      - local.graphql.local.nhost.run:host-gateway
-      - local.hasura.local.nhost.run:host-gateway
-      - local.storage.local.nhost.run:host-gateway
-      - local.auth.nhost.run:host-gateway
-      - local.db.nhost.run:host-gateway
-      - local.functions.nhost.run:host-gateway
-      - local.graphql.nhost.run:host-gateway
-      - local.hasura.nhost.run:host-gateway
-      - local.storage.nhost.run:host-gateway
+      - local.auth.localnnhost.run:host-gateway
+      - local.db.localnnhost.run:host-gateway
+      - local.functions.localnnhost.run:host-gateway
+      - local.graphql.localnnhost.run:host-gateway
+      - local.hasura.localnnhost.run:host-gateway
+      - local.storage.localnnhost.run:host-gateway
+      - local.authnnhost.run:host-gateway
+      - local.dbnnhost.run:host-gateway
+      - local.functionsnnhost.run:host-gateway
+      - local.graphqlnnhost.run:host-gateway
+      - local.hasurannhost.run:host-gateway
+      - local.storagennhost.run:host-gateway
     ports:
       - mode: ingress
         target: 443
@@ -605,7 +605,7 @@ services:
         target: /var/run/docker.sock
         read_only: true
       - type: bind
-        source: .nhost/traefik
+        source: nnhost/traefik
         target: /opt/traefik
         read_only: true
 volumes:
